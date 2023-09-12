@@ -1,0 +1,31 @@
+#linux settings for elasticsearch
+#   sysctl -w vm.max_map_count=262144
+
+version: "2.4"
+
+services:
+  db:
+    image: postgres:14-alpine
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 15s
+      timeout: 4s
+      retries: 4
+      start_period: 15s
+    #    mem_limit: 1G
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=123
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+    command:
+      - -c
+      - max_prepared_transactions=100
+      - -c
+      - max_connections=100
+
+volumes:
+  db:
+    driver: local
