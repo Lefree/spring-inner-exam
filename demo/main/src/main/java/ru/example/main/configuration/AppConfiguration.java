@@ -1,14 +1,11 @@
 package ru.example.main.configuration;
 
-
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.FilterType;
-import ru.example.fake.module.service.FirstServiceBean;
+import org.springframework.context.annotation.Import;
+import ru.example.fake.module.configuration.FakeModuleConfiguration;
 
 @Configuration
-@ComponentScan(basePackages = {"ru.example"},
-        excludeFilters = @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, value = FirstServiceBean.class))
+@Import(value = {FakeModuleConfiguration.class})
 public class AppConfiguration {
 
 }
