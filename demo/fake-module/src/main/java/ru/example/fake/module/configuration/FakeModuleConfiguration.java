@@ -6,7 +6,7 @@ import org.springframework.context.annotation.FilterType;
 import ru.example.fake.module.service.FirstServiceBean;
 
 @Configuration
-@ComponentScan(basePackages = {"ru.example.fake.module"},
+@ComponentScan(basePackages = {"ru.example.fake.module.service"},
         excludeFilters = @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, value = FirstServiceBean.class))
 public class FakeModuleConfiguration {
 

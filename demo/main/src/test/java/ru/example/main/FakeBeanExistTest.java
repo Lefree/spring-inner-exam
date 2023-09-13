@@ -21,7 +21,7 @@ public class FakeBeanExistTest {
     private ApplicationContext context;
 
     @Test
-    void testExcludeBeanFromContextByComponentScanFilter() {
+    void testExcludeBeanFromContext() {
         NoSuchBeanDefinitionException exception = Assertions.assertThrows(NoSuchBeanDefinitionException.class,
                 () -> context.getBean("firstServiceBean", FirstServiceBean.class),
                 "Bean with name \'firstServiceName\' has been added to ApplicationContext");
